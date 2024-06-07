@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="5">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Котировки акций</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .table-container {
+            width: 80%;
+            overflow-y: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            top: 0;
+            position: absolute;
+        }
+        .stock-table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        .stock-table th, .stock-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .stock-table th {
+            background-color: #4CAF50;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+        .positive {
+            color: rgb(7, 199, 0);
+        }
+        .negative {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="table-container">
+        <table class="stock-table">
+            <thead>
+                <tr>
+                    <th>Время</th>
+                    <th>Компания</th>
+                    <th>Тикер</th>
+                    <th>Цена</th>
+                    <th>Изменение</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ticker, data in messages.items() %}
+                <tr>
+                    <td>{{ data.time }}</td>
+                    <td>{{ data.company }}</td>
+                    <td>{{ ticker }}</td>
+                    <td>{{ data.price }}</td>
+                    <td class="{% if data.change >= 0 %}positive{% else %}negative{% endif %}">
+                        {{ data.change|round(2) }}%
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

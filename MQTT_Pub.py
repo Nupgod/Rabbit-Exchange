@@ -14,14 +14,14 @@ mqtt_password = 'admin'
 # Stock symbols
 stock_symbol_list = {
     "AAPL": "Apple",
-    "MOEX": "Московская биржа",
+    "MOEX": "Moscow exchange",
     "GOOG": "Google Alphabet",
-    "GAZP": "Газпром",
-    "SBER": "Сбер",
-    "LKOH": "Лукойл",
+    "GAZP": "Gazprom",
+    "SBER": "SBER",
+    "LKOH": "Lukoil",
     "OZON": "OZON",
-    "RUAL": "Русал",
-    "TCSG": "Тинькофф"
+    "RUAL": "Rusal",
+    "TCSG": "Tinkoff"
 }
 
 def publish_messages():
